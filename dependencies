@@ -1,0 +1,6 @@
+#
+####### MALnet_bot dependencies list #######
+#
+
+emoji >= 0.3.9
+pyTelegramBotAPI >= 1.4.2

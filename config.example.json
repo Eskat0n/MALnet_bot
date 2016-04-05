@@ -1,0 +1,9 @@
+{
+  "Bot": {
+    "Token": "<INSERT_YOUR_TOKEN_HERE>"
+  },
+  "MAL": {
+    "UserName": "<INSERT_YOUR_MAL_USER_NAME_HERE>",
+    "Password": "<INSERT_YOUR_MAL_USER_PASSWORD_HERE>"
+  }
+}
