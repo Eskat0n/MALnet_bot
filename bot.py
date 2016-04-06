@@ -19,7 +19,7 @@ def send_welcome(message):
 @bot.message_handler(func=lambda m: True)
 def search_anime(message):
     chat_id = message.chat.id
-    entries = mal.search(message.text)
+    entries = mal.search_anime(message.text)
 
     if len(entries) == 0:
         bot.send_message(chat_id,
@@ -30,7 +30,7 @@ def search_anime(message):
 
 @bot.inline_handler(func=lambda q: True)
 def query_text(query):
-    entries = mal.search(query.query)
+    entries = mal.search_anime(query.query)
     results = [InlineQueryResultArticle(entry.id, entry.title, entry.to_markdown,
                                         parse_mode='Markdown',
                                         disable_web_page_preview=True,
