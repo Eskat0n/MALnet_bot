@@ -11,7 +11,9 @@ class AnimeEntry:
     def __init__(self, entry_id, title, english, synonyms, episodes,
                  score, entry_type, status, start_date, end_date, image, synopsis):
         self.id = entry_id
+        self.url = 'http://myanimelist.net/anime/{}'.format(entry_id)
         self.title = title
+        self.full_title = '{} ({})'.format(title, entry_type)
         self.english = english
         self.synonyms = synonyms
         self.episodes = episodes
@@ -24,11 +26,11 @@ class AnimeEntry:
         self.synopsis = synopsis.replace('<br />', '') if synopsis is not None else None
 
     @property
-    def full_title(self):
-        return '{} ({})'.format(self.title, self.type)
+    def score_info(self):
+        return 'Score: {}'.format(self.score)
 
     @property
-    def info(self):
+    def all_info(self):
         return "Synonyms: {}\nEpisodes: {}\nStatus: {}\nAired: {} to {}\nScore: {}{}".format(
             self.synonyms,
             self.episodes, self.status,
@@ -38,10 +40,8 @@ class AnimeEntry:
         )
 
     @property
-    def markdown(self):
-        return '[{}](http://myanimelist.net/anime/{})\n{}'.format(
-            self.full_title, self.id, self.info
-        )
+    def to_markdown(self):
+        return '[{}]({})\n{}'.format(self.full_title, self.url, self.all_info)
 
 
 def authorize():
