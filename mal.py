@@ -68,7 +68,18 @@ class MangaEntry(Entry):
                          start_date, end_date, synopsis, image)
         self.url = 'http://myanimelist.net/manga/{}'.format(entry_id)
         self.volumes = volumes
+        self.volumes_info = 'Volumes: {}'.format(self.volumes)
         self.chapters = chapters
+        self.chapters_info = 'Chapters: {}'.format(self.chapters)
+
+    @property
+    def all_info(self):
+        return "{}\n{}\n{}\n{}\nPublished: {} to {}\n{}\n\n{}".format(
+            self.synonyms_info, self.volumes_info, self.chapters_info, self.status_info,
+            self.start_date, self.end_date,
+            self.score_info,
+            self.synopsis
+        )
 
 def authorize():
     mal_config = read_mal_config()
